@@ -37,7 +37,8 @@ RUN apk upgrade && apk update && \
 
 # Install persistent dependencies
 RUN apk add --update --no-cache --virtual .persistent-dependencies $persistent_deps \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer\
+    && composer global require "hirak/prestissimo" 
 
 # Install docker ext and remove build deps
 RUN apk update \
